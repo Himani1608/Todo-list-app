@@ -23,8 +23,7 @@ pipeline {
         }
         stage('Deploy Docker Image') {
             steps {
-                sh "sudo fuser -k 87/tcp"
-                sh "sudo docker run -it -p 87:80 -d myapp"
+                sh "sudo docker run -it -p 187:80 -d myapp"
             }
         }
     }
