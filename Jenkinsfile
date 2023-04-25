@@ -17,13 +17,13 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh "docker build . -t myapp"
+                    sh "sudo docker build . -t myapp"
                 }
             }
         }
         stage('Deploy Docker Image') {
             steps {
-                sh "docker run -it -p 87:80 -d myapp"
+                sh "sudo docker run -it -p 87:80 -d myapp"
             }
         }
     }
