@@ -14,22 +14,16 @@ pipeline {
                 git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
             }
         }
-        stage('Build and Push Docker Image') {
+        stage('Build') {
             steps {
                 script {
-                    docker.withRegistry("https://registry.hub.docker.com", "${DOCKERHUB_CREDENTIAL_ID}") {
-                        def app = docker.build("${IMAGE_NAME}:${env.BUILD_NUMBER}", ".")
-                        app.push()
-                    }
+                    sh "docker build -t myapp"
                 }
             }
         }
         stage('Deploy Docker Image') {
             steps {
-                sh "docker stop ${CONTAINER_NAME} || true"
-                sh "docker rm ${CONTAINER_NAME} || true"
-                sh "docker pull ${IMAGE_NAME}:${env.BUILD_NUMBER}"
-                sh "docker run -d --name ${CONTAINER_NAME} -p ${PORT}:80 ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                sh "docker run -it -p 87:80 -d myapp"
             }
         }
     }
