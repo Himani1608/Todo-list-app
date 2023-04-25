@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        PORT = "85"
-        DOCKERHUB_CREDENTIAL_ID = "dockerhub"
+//         PORT = "85"
+//         DOCKERHUB_CREDENTIAL_ID = "dockerhub"
         IMAGE_NAME = "devops-project-image"
         CONTAINER_NAME = "devops-project"
         GIT_REPO = "https://github.com/Himani1608/Todo-list-app.git"
