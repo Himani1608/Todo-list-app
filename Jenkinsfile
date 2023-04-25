@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Deploy Docker Image') {
             steps {
-                sh "sudo docker run -it -p 187:80 --name ${CONTAINER_NAME} -d ${IMAGE_NAME}"
+                sh "sudo docker run -it -p 287:80 --name ${CONTAINER_NAME} -d ${IMAGE_NAME}"
             }
         }
     }
